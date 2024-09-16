@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mongo:latest
+    container_name: mongo-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: yourusername
+      MONGO_INITDB_ROOT_PASSWORD: yourpassword
+    volumes:
+      - ./mongo_data:/data/db
+    networks:
+      - mongo-network
+    ports:
+        - :27017
+networks:
+  mongo-network:
+    external: true
